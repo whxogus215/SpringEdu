@@ -12,7 +12,7 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // request : 웹 브라우저에서 요청한 메세지를 기반으로 WAS에서 객체를 생성한 것, response : 서버가 다시 WAS에 전달할 Http 응답 객체
+        // request : 웹 브라우저에서 요청한 메세지를 기반으로 객체를 생성한 것, response : 서버가 다시 WAS에 전달할 내용을 담는 Http 응답 객체
         System.out.println("HelloServlet.service");
         System.out.println("request = " + request);
         System.out.println("response = " + response);
