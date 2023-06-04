@@ -19,6 +19,9 @@ public class MyView {
         dispatcher.forward(request, response);
     }
 
+    /** 기존에는 HTTP Request에 렌더링에 필요한 데이터들을 저장했지만 이제는 ModeView(Model)에 데이터를 저장하기 때문에
+        렌더링하는 과정에서 ModelView에 저장된 Map(실제 ModelView에서 렌더링에 필요한 데이터가 저장된 곳)이 추가로 필요하다.
+     **/
     public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         modelToRequestAttribute(model, request);
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
