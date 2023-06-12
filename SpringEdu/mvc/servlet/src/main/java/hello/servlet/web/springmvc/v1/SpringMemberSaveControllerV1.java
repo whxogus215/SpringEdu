@@ -17,7 +17,6 @@ public class SpringMemberSaveControllerV1 {
 
     @RequestMapping("/springmvc/v1/members/save")
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response) {
-        // v3 save 컨트롤러 로직과 동일 - 반환형이 ModelView가 아닌 ModelAndView
         String username = request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
 
