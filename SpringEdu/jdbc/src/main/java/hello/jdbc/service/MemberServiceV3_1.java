@@ -47,17 +47,6 @@ public class MemberServiceV3_1 {
         memberRepository.update(toId, toMember.getMoney() + money);
     }
 
-    private static void release(Connection con) {
-        if (con != null) {
-            try {
-                con.setAutoCommit(true); // 풀에 반납할 때는 오토커밋으로 변경하고 반납해야 한다. - 커넥션 풀을 안 쓰면 상관X
-                con.close();
-            } catch (Exception e) {
-                log.info("error", e);
-            }
-        }
-    }
-
     private static void validation(Member toMember) {
         if (toMember.getMemberId().equals("ex")) {
             throw new IllegalStateException("이체 중 예외 발생");
