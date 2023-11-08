@@ -3,6 +3,8 @@ package hello.upload.file;
 import hello.upload.domain.UploadFile;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,16 @@ public class FileStore {
 
     public String getFullPath(String fileName) {
         return fileDir + fileName;
+    }
+
+    public List<UploadFile> storeFiles(List<MultipartFile> multipartFiles) throws IOException {
+        List<UploadFile> storeFileResult = new ArrayList<>();
+        for (MultipartFile multipartFile : multipartFiles) {
+            if (!multipartFiles.isEmpty()) {
+                storeFileResult.add(storeFile(multipartFile));
+            }
+        }
+        return storeFileResult;
     }
 
     public UploadFile storeFile(MultipartFile multipartFile) throws IOException {
