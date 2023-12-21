@@ -7,13 +7,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create # 서버 실행 시 기존의 테이블 삭제 후 다시 생성
     properties:
       hibernate:
-#        show_sql: true
-        format_sql: true
+        format_sql: true # 출력되는 SQL 쿼리문을 좀 더 보기 편하게 만들어줌
+      #  show_sql: true - System.out을 통해 남기는 로그 (사용 안하는 것을 권장)
 
 logging:
   level:
-    org.hibernate.sql: debug
-    org.hibernate.type: trace
+    org.hibernate.sql: debug # 로거를 통해 하이버네이트의 SQL 쿼리문을 남김
+    org.hibernate.type: trace # SQL 쿼리 파라미터의 값인 ?가 무엇인지 로그를 통해 남김

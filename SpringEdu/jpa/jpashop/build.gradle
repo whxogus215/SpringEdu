@@ -25,7 +25,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 개발 관련 도구 모음
     implementation 'org.springframework.boot:spring-boot-devtools'
+    
+    // p6spy : SQL 쿼리 파라미터 값 확인해주는 외부 라이브러리
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
 
     compileOnly 'org.projectlombok:lombok'
