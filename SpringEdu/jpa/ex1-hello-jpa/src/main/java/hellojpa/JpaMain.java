@@ -14,13 +14,12 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member1 = new Member(150L, "A");
-            Member member2 = new Member(160L, "B");
+            Member findMember = em.find(Member.class, 150L);
+            findMember.setName("ZZZZ");
 
-            em.persist(member1);
-            em.persist(member2); // 해당 엔티티 매니저의 1차 캐시에 저장되고, SQL 쿼리가 쌓여있음.
+            // em.persist(findMember); 엔티티 수정 시 다시 영속화 하지 않는다! 별도의 update 메서드도 없음
 
-            tx.commit(); // 쌓여있던 쿼리가 Flush 되면서 커밋함.
+            tx.commit();
         } catch (Exception e) {
             tx.rollback();
         } finally {
