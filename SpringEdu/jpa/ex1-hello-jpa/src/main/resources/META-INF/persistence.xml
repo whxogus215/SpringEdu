@@ -16,7 +16,14 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
 <!--            <property name="hibernate.jdbc.batch_size" value="10"/> 커밋 시점에 한번에 보내는 쿼리문의 개수 조절 (버퍼링)-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+
+           <!-- 개발 단계에서만 사용하고, 테스트 or 운영 서버에서는 사용하지 말 것!(none으로 설정)
+            <property name="hibernate.hbm2ddl.auto" value="create" /> : 어플리케이션 실행시 DROP + CREATE&ndash;&gt;
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" /> : 어플리케이션 실행시 CREATE + DROP (마지막에 테이블을 싹 지움)
+            <property name="hibernate.hbm2ddl.auto" value="update" /> : 테이블을 지우지 않고 변경된 부분만 업데이트 (ALTER TABLE 쿼리 날림) (단, 컬럼이 추가될 때만 변경됨)
+            <property name="hibernate.hbm2ddl.auto" value="validate" /> : 엔티티와 테이블이 정상적으로 매핑되었는지 확인하는 용도
+           -->
+
         </properties>
     </persistence-unit>
 </persistence>
