@@ -15,7 +15,6 @@ public class JpaMain {
 
         try {
             Member findMember = em.find(Member.class, 150L);
-            findMember.setName("AAAA");
 
             em.detach(findMember); // 엔티티 매니저에서 관리하지 않게 만듦(준영속화)
             // em.clear(); 그 외에 준영속화를 할 수 있는 메서드들
