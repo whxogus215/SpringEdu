@@ -14,15 +14,13 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // 비영속
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("HelloJPA");
+            Member member1 = new Member(150L, "A");
+            Member member2 = new Member(160L, "B");
 
-            // 영속 : 엔티티 매니저 안에 있는 영속성 컨텍스트 안에서 관리되는 상태
-            em.persist(member); // 여기서는 실제 DB에 저장되지 않는 상태
+            em.persist(member1);
+            em.persist(member2); // 해당 엔티티 매니저의 1차 캐시에 저장되고, SQL 쿼리가 쌓여있음.
 
-            tx.commit(); // 실제 쿼리는 이 때 나감
+            tx.commit(); // 쌓여있던 쿼리가 Flush 되면서 커밋함.
         } catch (Exception e) {
             tx.rollback();
         } finally {

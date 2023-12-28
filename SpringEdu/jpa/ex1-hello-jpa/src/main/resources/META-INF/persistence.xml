@@ -15,6 +15,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+<!--            <property name="hibernate.jdbc.batch_size" value="10"/> 커밋 시점에 한번에 보내는 쿼리문의 개수 조절 (버퍼링)-->
             <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
         </properties>
     </persistence-unit>
