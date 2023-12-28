@@ -14,23 +14,15 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // 자바 컬렉션에서 꺼내오는 것처럼 사용 가능!
-//            Member findMember = em.find(Member.class, 1L);
-            /**
-             * 삭제 쿼리
-             * em.remove(findMember);
-             */
-//            findMember.setName("HelloJPA");
-            /**
-             * 객체(엔티티)를 대상으로 쿼리를 날림 - JPQL
-             */
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .getResultList();
-            for (Member member : result) {
-                System.out.println("member.name = " + member.getName());
-            }
+            // 비영속
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("HelloJPA");
 
-            tx.commit();
+            // 영속 : 엔티티 매니저 안에 있는 영속성 컨텍스트 안에서 관리되는 상태
+            em.persist(member); // 여기서는 실제 DB에 저장되지 않는 상태
+
+            tx.commit(); // 실제 쿼리는 이 때 나감
         } catch (Exception e) {
             tx.rollback();
         } finally {
