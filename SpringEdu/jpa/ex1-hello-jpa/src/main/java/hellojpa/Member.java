@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
@@ -15,7 +17,7 @@ import javax.persistence.Transient;
 
 @Entity
 public class Member {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name", nullable = false) // 해당 컬럼이 NOT NULL이 됨 (자주 사용)
     private String name;
@@ -49,4 +51,11 @@ public class Member {
         // JPA를 사용하는 경우, 엔티티는 기본 생성자가 있어야 한다.
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
